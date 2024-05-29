@@ -11,11 +11,14 @@ import {
   Stack,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from '@chakra-ui/icons';
+import { Link as RouterLink } from 'react-router-dom';
 
 const Links = ['Dashboard', 'Projects', 'Team'];
 
-const NavLink = ({ children }: { children: ReactNode }) => (
+const NavLink = ({ children,to }: { children: ReactNode, to: string }) => (
   <Link
+    as={RouterLink}
+    to={to}
     px={2}
     py={1}
     rounded={'md'}
@@ -49,7 +52,7 @@ export default function Navbar() {
             spacing={4}
             display={{ base: 'none', md: 'flex' }}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink key={link} to={`/${link.toLowerCase()}`}>{link}</NavLink>
             ))}
           </HStack>
         </HStack>
@@ -67,7 +70,7 @@ export default function Navbar() {
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as={'nav'} spacing={4}>
             {Links.map((link) => (
-              <NavLink key={link}>{link}</NavLink>
+              <NavLink key={link} to={`/${link.toLowerCase()}`}>{link}</NavLink>
             ))}
           </Stack>
         </Box>
