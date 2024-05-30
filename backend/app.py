@@ -13,4 +13,4 @@ def index():
     return {'medals': [{'disciplineTitle': medal.discipline_title, 'slugGame': medal.slug_game} for medal in medals]}
 
 if __name__ == '__main__':
-    app.run(debug=True, host='0.0.0.0', port=8080)
+    app.run(debug=True, host='10.217.136.220', port=8080)

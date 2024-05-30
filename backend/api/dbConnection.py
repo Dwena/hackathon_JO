@@ -21,6 +21,7 @@ def create_app():
     # Use PyMySQL
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+pymysql://{DB_USER}:{DB_PASSWORD}@{DB_HOST}:{DB_PORT}/{DB_NAME}'
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    app.config['SQLALCHEMY_POOL_SIZE'] = 20
 
     db = SQLAlchemy(app)
     return app, db
