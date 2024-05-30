@@ -1,7 +1,8 @@
 import { ChakraBaseProvider, extendBaseTheme, theme as chakraTheme } from '@chakra-ui/react';
-import Navbar from './components/Navbar';
 import { BrowserRouter as Router, Routes,Route } from 'react-router-dom';
-import Team from './team/team.tsx';
+import Navbar from './components/Navbar';
+import News from './components/News';
+import Team from './components/team/team';
 
 const { Button } = chakraTheme.components;
 
@@ -14,12 +15,14 @@ const theme = extendBaseTheme({
 function App() {
   return (
     <ChakraBaseProvider theme={theme}>
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/Team" element={<Team />} />
-        </Routes>
-      </Router>
+    <Router>
+      <Navbar />
+      <Routes>
+        <Route path="/" element={<Team />} />
+        <Route path="/Team" element={<Team />} />
+        <Route path="/News" element={<News />} />
+      </Routes>
+    </Router>
     </ChakraBaseProvider>
   );
 }
