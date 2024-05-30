@@ -9,11 +9,13 @@ import {
   useColorMode,
   useColorModeValue,
   Stack,
+  Image,
 } from '@chakra-ui/react';
 import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
+import logo from '../assets/logo.jpg';
 
-const Links = ['Dashboard', 'Projects', 'Team'];
+const Links = ['Team','Analyse', 'Prédictions', 'News'];
 
 const NavLink = ({ children,to }: { children: ReactNode, to: string }) => (
   <Link
@@ -46,7 +48,9 @@ export default function Navbar() {
           onClick={isOpen ? onClose : onOpen}
         />
         <HStack spacing={8} alignItems={'center'}>
-          <Box>Logo</Box>
+          <Box>
+            <Image src={logo} alt="Logo" boxSize="50px" />
+          </Box>
           <HStack
             as={'nav'}
             spacing={4}
