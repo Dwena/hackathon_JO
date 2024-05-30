@@ -1,8 +1,16 @@
 import { useState, useEffect } from 'react';
-import { Box, Heading, Text, Link, Stack, useColorModeValue, Image, VStack, Center } from '@chakra-ui/react';
+import { Box, Heading, Text, Link, useColorModeValue, Image, VStack, Center } from '@chakra-ui/react';
 
+interface Article {
+  title: string;
+  description: string;
+  url: string;
+  urlToImage: string;
+  publishedAt: string;
+  source: { name: string };
+}
 const News = () => {
-  const [articles, setArticles] = useState([]);
+  const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
     const fetchArticles = async () => {
