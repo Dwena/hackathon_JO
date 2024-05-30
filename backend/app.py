@@ -50,7 +50,3 @@ async def create_medal(medal: Medal):
     )
     last_record_id = await database.execute(query)
     return {**medal.dict(), "id": last_record_id}
-
-if __name__ == '__main__':
-    import uvicorn
-    uvicorn.run(app, host='0.0.0.0', port=8080)
