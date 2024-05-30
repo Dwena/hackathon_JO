@@ -1,5 +1,4 @@
-from flask import Flask
-from services.dbConnection import app, db
+from dbConnection import app, db
 
 class OlympicsMedalsCleaned(db.Model):
     __tablename__ = 'olympics_medals_cleaned'
