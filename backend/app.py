@@ -1,4 +1,4 @@
-from dbConnection import app, db
+from api.dbConnection import app, db
 
 class OlympicsMedalsCleaned(db.Model):
     __tablename__ = 'olympics_medals_cleaned'
