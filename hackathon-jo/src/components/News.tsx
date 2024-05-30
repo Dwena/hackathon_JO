@@ -13,6 +13,7 @@ const News = () => {
   const [articles, setArticles] = useState<Article[]>([]);
 
   useEffect(() => {
+    setArticles([]);
     const fetchArticles = async () => {
       const response = await fetch(
         `https://newsapi.org/v2/everything?q=Olympics&apiKey=e3e00b9c784b4b0fb5800ced7898fe28`
