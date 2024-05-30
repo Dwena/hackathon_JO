@@ -22,7 +22,6 @@ const News = () => {
   };
 
   useEffect(() => {
-    setArticles([]);
     fetchArticles();
   }, []);
 
@@ -31,7 +30,7 @@ const News = () => {
       <Heading as="h2" size="xl" textAlign="center" my={8}>
         Olympic News
       </Heading>
-      {articles.map((article, index) => (
+      {articles && articles.map((article, index) => (
         <Center key={index}>
           <Box
             w={{ base: '90%', md: '80%', lg: '60%' }}
