@@ -8,4 +8,3 @@ Guillaume BOUTROUE
 Abdelhay BOUTABBA
 Adrien MIRABELLE
 Gabrielle ROLLET
-Oumar TRAORE
