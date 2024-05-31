@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import News from './components/News';
 import Predictions from './components/Predictions';
-import Team from './components/team/team.tsx';
+import Analyse from './components/Analyse'; 
 
 const theme = extendTheme({});
 
@@ -13,10 +13,10 @@ function App() {
       <Router>
         <Navbar />
         <Routes>
-          <Route path="/" element={<Team />} />
+          <Route path="/" element={<News />} />
           <Route path="/predictions" element={<Predictions />} />
-          <Route path="/team" element={<Team />} />
           <Route path="/news" element={<News />} />
+          <Route path="/analyse" element={<Analyse />} /> {/* Nouvelle route */}
         </Routes>
       </Router>
     </ChakraProvider>
