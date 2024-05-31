@@ -15,12 +15,17 @@ import { HamburgerIcon, CloseIcon, SunIcon, MoonIcon } from '@chakra-ui/icons';
 import { Link as RouterLink } from 'react-router-dom';
 import logo from '../assets/logo.jpg';
 
-const Links = ['Team','Analyse', 'Prédictions', 'News'];
+const Links = [
+  { name: 'Team', path: '/team'},
+  { name: 'Analyse', path: '/analyse' },
+  { name: 'Prédictions', path: '/predictions' },
+  { name: 'News', path: '/news' },
+];
 
-const NavLink = ({ children,to }: { children: ReactNode, to: string }) => (
+const NavLink = ({ children, path }: { children: ReactNode, path: string }) => (
   <Link
     as={RouterLink}
-    to={to}
+    to={path}
     px={2}
     py={1}
     rounded={'md'}
@@ -28,7 +33,7 @@ const NavLink = ({ children,to }: { children: ReactNode, to: string }) => (
       textDecoration: 'none',
       bg: useColorModeValue('gray.200', 'gray.700'),
     }}
-    href={'#'}>
+  >
     {children}
   </Link>
 );
@@ -56,7 +61,7 @@ export default function Navbar() {
             spacing={4}
             display={{ base: 'none', md: 'flex' }}>
             {Links.map((link) => (
-              <NavLink key={link} to={`/${link.toLowerCase()}`}>{link}</NavLink>
+              <NavLink key={link.name} path={link.path}>{link.name}</NavLink>
             ))}
           </HStack>
         </HStack>
@@ -74,7 +79,7 @@ export default function Navbar() {
         <Box pb={4} display={{ md: 'none' }}>
           <Stack as={'nav'} spacing={4}>
             {Links.map((link) => (
-              <NavLink key={link} to={`/${link.toLowerCase()}`}>{link}</NavLink>
+              <NavLink key={link.name} path={link.path}>{link.name}</NavLink>
             ))}
           </Stack>
         </Box>
