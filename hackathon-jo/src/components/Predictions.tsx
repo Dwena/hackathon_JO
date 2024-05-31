@@ -5,6 +5,7 @@ import {
   useFilters,
   useGlobalFilter,
   usePagination,
+  Column
 } from 'react-table';
 import {
   Box,
@@ -22,8 +23,14 @@ import {
 } from '@chakra-ui/react';
 import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 
+interface Prediction {
+  country: string;
+  points: number;
+  discipline: string;
+  flag: string;
+}
 // Données de prédiction
-const predictions = [
+const predictions: Prediction[] = [
   { country: 'États-Unis', points: 100, discipline: 'Athlétisme', flag: 'https://flagcdn.com/us.svg' },
   { country: 'Chine', points: 90, discipline: 'Natation', flag: 'https://flagcdn.com/cn.svg' },
   { country: 'Japon', points: 80, discipline: 'Gymnastique', flag: 'https://flagcdn.com/jp.svg' },
@@ -40,7 +47,7 @@ const getMedalEmoji = (points: number) => {
 const Predictions = () => {
   const data = React.useMemo(() => predictions, []);
 
-  const columns = React.useMemo(() => [
+  const columns:Column<Prediction>[] = React.useMemo(() => [
     {
       Header: 'Pays',
       accessor: 'country',
@@ -54,7 +61,6 @@ const Predictions = () => {
     {
       Header: 'Points',
       accessor: 'points',
-      isNumeric: true,
     },
     {
       Header: 'Discipline',
@@ -62,7 +68,6 @@ const Predictions = () => {
     },
     {
       Header: 'Médaille',
-      accessor: 'medal',
       Cell: ({ row }) => (
         <Flex justify="center">{getMedalEmoji(row.original.points)}</Flex>
       ),
@@ -106,16 +111,16 @@ const Predictions = () => {
               <Tr {...headerGroup.getHeaderGroupProps()}>
                 {headerGroup.headers.map((column) => (
                   <Th
-                    {...column.getHeaderProps(column.getSortByToggleProps())}
-                    isNumeric={column.isNumeric}
+                    {...column.getHeaderProps((column as any).getSortByToggleProps())}
+                    isNumeric={(column as any).isNumeric}
                     textAlign="center"
                     fontSize="md"
                     py={4}
                   >
                     {column.render('Header')}
                     <chakra.span pl="4">
-                      {column.isSorted ? (
-                        column.isSortedDesc ? (
+                      {(column as any).isSorted ? (
+                        (column as any).isSortedDesc ? (
                           <TriangleDownIcon aria-label="sorted descending" />
                         ) : (
                           <TriangleUpIcon aria-label="sorted ascending" />
@@ -135,7 +140,7 @@ const Predictions = () => {
                   {row.cells.map((cell) => (
                     <Td
                       {...cell.getCellProps()}
-                      isNumeric={cell.column.isNumeric}
+                      isNumeric={(cell as any).column.isNumeric}
                       textAlign="center"
                       borderBottom="1px"
                       borderColor={useColorModeValue('gray.200', 'gray.600')}
