@@ -1,8 +1,8 @@
 
-from model.olympic_athletes import Athlete
-from model.olympic_hosts import Host
-from model.olympic_medals import Medal
-from model.olympic_results import Result
+from api.model.olympic_athletes import Athlete
+from api.model.olympic_hosts import Host
+from api.model.olympic_medals import Medal
+from api.model.olympic_results import Result
 from api.dbConnection import get_database
 
 db = get_database()
