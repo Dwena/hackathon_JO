@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Box, Heading, Text, Link, useColorModeValue, Image, VStack, Center } from '@chakra-ui/react';
+import { Box, Heading, Text, Link, Button, Flex, useColorModeValue, Image, VStack, Center } from '@chakra-ui/react';
 
 interface Article {
   title: string;
@@ -9,26 +9,31 @@ interface Article {
   publishedAt: string;
   source: { name: string };
 }
+
 const News = () => {
   const [articles, setArticles] = useState<Article[]>([]);
-
-  
-  const fetchArticles = async () => {
-    const response = await fetch(
-      `https://newsapi.org/v2/everything?q=Olympics&apiKey=e3e00b9c784b4b0fb5800ced7898fe28`
-    );
-    const data = await response.json();
-    setArticles(data.articles);
-  };
+  const [page, setPage] = useState(1);
+  const [totalResults, setTotalResults] = useState(0);
 
   useEffect(() => {
+    const fetchArticles = async () => {
+      const response = await fetch(
+        `https://newsapi.org/v2/everything?q=Jeux%20Olympiques&language=fr&page=${page}&pageSize=10&apiKey=e3e00b9c784b4b0fb5800ced7898fe28`
+      );
+      const data = await response.json();
+      setArticles(data.articles);
+      setTotalResults(data.totalResults);
+    };
+
     fetchArticles();
-  }, []);
+  }, [page]);
+
+  const totalPages = Math.ceil(totalResults / 10);
 
   return (
     <VStack spacing={8} align="stretch">
       <Heading as="h2" size="xl" textAlign="center" my={8}>
-        Olympic News
+        Actualités Olympiques
       </Heading>
       {articles && articles.map((article, index) => (
         <Center key={index}>
@@ -55,6 +60,23 @@ const News = () => {
           </Box>
         </Center>
       ))}
+      <Flex justifyContent="space-between" w="100%" px={4}>
+        <Button
+          onClick={() => setPage(page - 1)}
+          isDisabled={page === 1}
+        >
+          Précédent
+        </Button>
+        <Text>
+          Page {page} sur {totalPages}
+        </Text>
+        <Button
+          onClick={() => setPage(page + 1)}
+          isDisabled={page === totalPages}
+        >
+          Suivant
+        </Button>
+      </Flex>
     </VStack>
   );
 };
