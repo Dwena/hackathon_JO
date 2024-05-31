@@ -4,7 +4,7 @@ from api.model.olympic_hosts import Host
 from api.model.olympic_results import Result
 from api.model.olympic_medals import Medal
 
-from backend.api.services import get_medals, get_results, get_athletes, get_hosts
+from api.services import get_medals, get_results, get_athletes, get_hosts
 
 
 app = FastAPI()
