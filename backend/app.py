@@ -1,9 +1,9 @@
 from fastapi import FastAPI
-from backend.api.model.models import olympics_medals_cleaned
-from backend.api.model.olympic_athletes import Athlete
-from backend.api.model.olympic_hosts import Host
-from backend.api.model.olympic_results import Result
-from backend.api.model.olympic_medals import Medal
+from api.model.models import olympics_medals_cleaned
+from api.model.olympic_athletes import Athlete
+from api.model.olympic_hosts import Host
+from api.model.olympic_results import Result
+from api.model.olympic_medals import Medal
 
 from backend.api.services import get_medals, get_results, get_athletes, get_hosts
 
