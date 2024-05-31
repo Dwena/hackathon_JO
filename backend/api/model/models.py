@@ -1,4 +1,4 @@
-from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Boolean
 from api.dbConnection import DATABASE_URL
 
 metadata = MetaData()
@@ -56,7 +56,7 @@ olympic_results = Table(
     Column("participant_type", String(length=50)),
     Column("medal_type", String(length=100)),
     Column("athletes", String(length=100)),
-    Column("rank_equal",bool),
+    Column("rank_equal",Boolean),
     Column("rank_position", Integer),
     Column("country_name", String(length=100)),
     Column("country_code", String(length=100)),
