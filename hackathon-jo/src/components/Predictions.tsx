@@ -44,7 +44,7 @@ const Predictions = () => {
     {
       Header: 'Pays',
       accessor: 'country',
-      Cell: ({ row }) => (
+      Cell: ({ row }: {row: any}) => (
         <Flex align="center" justify="center">
           <Image src={row.original.flag} alt={`Drapeau de ${row.original.country}`} boxSize="30px" objectFit="contain" mr={2} />
           {row.original.country}
@@ -63,7 +63,7 @@ const Predictions = () => {
     {
       Header: 'Médaille',
       accessor: 'medal',
-      Cell: ({ row }) => (
+      Cell: ({ row }:{row: any}) => (
         <Flex justify="center">{getMedalEmoji(row.original.points)}</Flex>
       ),
     },
@@ -102,9 +102,9 @@ const Predictions = () => {
       <Box overflowX="auto">
         <Table {...getTableProps()} variant="striped" colorScheme="teal" size="md" w="100%">
           <Thead bg={useColorModeValue('gray.100', 'gray.700')}>
-            {headerGroups.map((headerGroup) => (
+            {headerGroups.map((headerGroup: any) => (
               <Tr {...headerGroup.getHeaderGroupProps()}>
-                {headerGroup.headers.map((column) => (
+                {headerGroup.headers.map((column: any) => (
                   <Th
                     {...column.getHeaderProps(column.getSortByToggleProps())}
                     isNumeric={column.isNumeric}
@@ -128,11 +128,11 @@ const Predictions = () => {
             ))}
           </Thead>
           <Tbody {...getTableBodyProps()}>
-            {rows.map((row) => {
+            {rows.map((row: any) => {
               prepareRow(row);
               return (
                 <Tr {...row.getRowProps()} height="60px" _hover={{ bg: useColorModeValue('gray.200', 'gray.600') }}>
-                  {row.cells.map((cell) => (
+                  {row.cells.map((cell: any) => (
                     <Td
                       {...cell.getCellProps()}
                       isNumeric={cell.column.isNumeric}
