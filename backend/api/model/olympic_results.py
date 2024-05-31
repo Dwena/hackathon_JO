@@ -1,18 +1,18 @@
 from pydantic import BaseModel
 
 class Result(BaseModel):
-    discipline_title: str
-    event_title: str
-    slug_game: str
-    participant_type: str
-    medal_type: str
-    athletes: str
-    rank_equal: bool
-    rank_position: int
-    country_name: str
-    country_code: str
-    country_3_letter_code: str
-    athlete_full_name: str
-    athlete_url: str
-    value_unit: int
-    value_type: str
+    discipline_title: str = None
+    event_title: str = None
+    slug_game: str = None
+    participant_type: str = None
+    medal_type: str = None
+    athletes: str = None
+    rank_equal: bool = None
+    rank_position: int = None
+    country_name: str = None
+    country_code: str = None
+    country_3_letter_code: str = None
+    athlete_full_name: str = None
+    athlete_url: str =None
+    value_unit: int = None
+    value_type: str = None

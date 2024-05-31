@@ -1,10 +1,10 @@
 from pydantic import BaseModel
 
 class Athlete(BaseModel):
-    athlete_full_name: str
-    athlete_url: str
-    games_participations: int
-    athlete_year_birth: int
-    athlete_medals: str
-    bio: str
-    first_game: str
+    athlete_full_name: str = None
+    athlete_url: str = None
+    games_participations: int = None
+    athlete_year_birth: int = None
+    athlete_medals: str =None
+    bio: str =None
+    first_game: str =None
