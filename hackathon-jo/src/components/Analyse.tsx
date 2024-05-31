@@ -1,3 +1,4 @@
+import  { useState } from 'react';
 import {
   Box,
   Heading,
@@ -5,6 +6,8 @@ import {
   Image,
   useColorModeValue,
   VStack,
+  Button,
+  ButtonGroup,
 } from '@chakra-ui/react';
 
 const questionsAndAnswers = [
@@ -34,19 +37,26 @@ const questionsAndAnswers = [
     }
   ];
 
-const plotFiles = [
+const model1Plots = [
   '/src/assets/plot_images/plot_0_20.png',
   '/src/assets/plot_images/plot_0_21.png',
-  '/src/assets/plot_images/plot_0_22.png',
+  '/src/assets/plot_images/plot_0_22.png'
+];
+
+const model2Plots = [
   '/src/assets/plot_images/plot_1_10.png',
   '/src/assets/plot_images/plot_2_7.png',
-  '/src/assets/plot_2_8.png',
+  '/src/assets/plot_images/plot_2_8.png',
   '/src/assets/plot_images/plot_2_9.png',
   '/src/assets/plot_images/plot_2_17.png',
   '/src/assets/plot_images/plot_2_19.png'
 ];
 
 const Analyse = () => {
+  const [currentModel, setCurrentModel] = useState('Model1');
+
+  const plots = currentModel === 'Model1' ? model1Plots : model2Plots;
+
   return (
     <Box w="100%" mx="auto" p={6} mt={8}>
       <Heading as="h2" size="xl" mb={6} textAlign="center">
@@ -66,9 +76,17 @@ const Analyse = () => {
         </Box>
         <Box>
           <Heading as="h3" size="lg" mb={4} textAlign="center">
-            Analyses du Modèle
+            Analyses du Modèle {currentModel === 'Model1' ? 'GradientBoostingRegressor' : 'XGBoost'}
           </Heading>
-          {plotFiles.map((plot, index) => (
+          <ButtonGroup variant="outline" spacing="6" mb={4} justifyContent="center">
+            <Button onClick={() => setCurrentModel('Model1')} isActive={currentModel === 'Model1'}>
+              GradientBoostingRegressor
+            </Button>
+            <Button onClick={() => setCurrentModel('Model2')} isActive={currentModel === 'Model2'}>
+              XGBoost
+            </Button>
+          </ButtonGroup>
+          {plots.map((plot, index) => (
             <Image key={index} src={plot} alt={`Graphique ${index + 1}`} mb={6} />
           ))}
         </Box>
