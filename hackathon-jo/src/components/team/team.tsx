@@ -29,26 +29,19 @@ const team = [
         firstname: 'Abdelhay',
         lastname: 'BOUTABBA',
         role: 'Développeur front-end',
-    },
-    {
-        firstname: 'Oumar',
-        lastname: 'TRAORE',
-        role: 'ABSENT',
     }
 ];
 function Accueil() {
   return (
     <div className="accueil">
         <header className="accueil-header">
-            <h1>Team</h1>
+            <h1>Présentation</h1>
         </header>
         <section className="Introduction">
-            <h2>A propos de notre équipe</h2>
-            <p>Nous sommes étudiants à l'école IPSSI en master Dev Data et IA, et nous réalisons ce projet dans le cadre d'un Hackathon interne sur les JO pour évaluer nos capacités à nous adapter à un context qui sort du cadre scolaire avec une équipe "inconnue"</p>
-        </section>
-        <section className="Project">
-            <h2>Notre projet sur les JO</h2>
-            <p>Notre projet consiste à prédire pour les JO de Paris , les résultats des différents pays grâce aux données des années précedentes.</p>
+            <div className="presentation">
+                <h2>A propos de notre équipe</h2>
+                <p>Nous sommes étudiants à l'école IPSSI en master Dev Data et IA, et nous réalisons ce projet dans le cadre d'un Hackathon interne sur les JO pour évaluer nos capacités à nous adapter à un context qui sort du cadre scolaire avec une équipe "inconnue"</p>
+            </div>
         </section>
         <section className="Equipe">
             <div className="cards">
@@ -61,6 +54,15 @@ function Accueil() {
                 ))}
             </div>
         </section>
+        <div>
+            <header className='accueil-header'>
+                <h1>Notre projet sur les JO</h1>
+            </header>
+            <div className='presentation'>
+                <p>Notre projet consiste à prédire pour les JO de Paris , les résultats des différents pays grâce aux données des années précedentes.</p>
+                <p>Les données nous ont directement été fournies par l'école sous forme de dataset en format xlsx, json et xml de tous les JO de 1886 a 2020</p>
+            </div>
+        </div>
     </div>
   );
 }

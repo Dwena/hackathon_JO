@@ -9,7 +9,7 @@ body{
 }
 
 .accueil-header{
-    background-color: #282c34;
+    background-color: #09c7e9;
     padding: 20px;
     color: white;
 }
@@ -34,7 +34,7 @@ body{
 }
   
 .card {
-    background: #880000;
+    background: #00b963;
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
@@ -42,7 +42,14 @@ body{
     max-width: 300px; /* Max width for larger screens */
     box-sizing: border-box;
 }
-
+.presentation{
+    text-align: center;
+    padding: 20px;
+    margin: 0 auto;
+    font-size: large;
+    font-family: 'Roboto', sans-serif;
+    font-style: oblique;
+}
 @media (min-width: 600px) {
     .Team-card {
       width: calc(50% - 40px); /* Half width minus margins for medium screens */
@@ -55,6 +62,6 @@ body{
     }
 }
 .card:hover {
-    background: #b30101;
+    background: #00b909;
     color: white;
 }
