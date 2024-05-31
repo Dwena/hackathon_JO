@@ -1,5 +1,4 @@
 from fastapi import FastAPI
-from api.model.models import olympics_medals_cleaned
 from api.model.olympic_athletes import Athlete
 from api.model.olympic_hosts import Host
 from api.model.olympic_results import Result

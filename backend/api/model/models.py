@@ -1,5 +1,5 @@
 from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Boolean
-from api.dbConnection import DATABASE_URL
+from dbConnection import DATABASE_URL
 
 metadata = MetaData()
 
