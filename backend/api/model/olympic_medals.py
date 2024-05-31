@@ -1,14 +1,14 @@
 from pydantic import BaseModel
 
 class Medal(BaseModel):
-    discipline_title: str
-    slug_game: str
-    event_title: str
-    event_gender: str
-    medal_type: str
-    participant_type: str
-    athlete_url: str
-    athlete_full_name: str
-    country_name: str
-    country_code: str
-    country_3_letter_code: str
+    discipline_title: str= None
+    slug_game: str= None
+    event_title: str= None
+    event_gender: str= None
+    medal_type: str= None
+    participant_type: str= None
+    athlete_url: str= None
+    athlete_full_name: str= None
+    country_name: str= None
+    country_code: str= None
+    country_3_letter_code: str= None

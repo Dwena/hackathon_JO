@@ -1,28 +1,16 @@
 
-from api.model.olympic_athletes import Athlete
-from api.model.olympic_hosts import Host
-from api.model.olympic_medals import Medal
-from api.model.olympic_results import Result
-from api.dbConnection import get_database
+async def get_medals(db):
+    query = "SELECT * FROM olympics_medals_cleaned"
+    return await db.fetch_all(query)
 
-db = get_database()
+async def get_results(db):
+    query = "SELECT * FROM olympic_results"
+    return await db.fetch_all(query)
 
-def get_medals():
-    query = db.select([db.olympics_medals_cleaned])
-    results = db.execute(query).fetchall()
-    return [Medal(**dict(result)) for result in results]
+async def get_athletes(db):
+    query = "SELECT * FROM olympic_athletes"
+    return await db.fetch_all(query)
 
-def get_results():
-    query = db.select([db.olympic_results])
-    results = db.execute(query).fetchall()
-    return [Result(**dict(result)) for result in results]
-
-def get_athletes():
-    query = db.select([db.olympic_athletes])
-    results = db.execute(query).fetchall()
-    return [Athlete(**dict(result)) for result in results]
-
-def get_hosts():
-    query = db.select([db.olympic_hosts])
-    results = db.execute(query).fetchall()
-    return [Host(**dict(result)) for result in results]
+async def get_hosts(db):
+    query = "SELECT * FROM olympic_hosts"
+    return await db.fetch_all(query)
