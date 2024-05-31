@@ -4,6 +4,7 @@ from api.model.olympic_hosts import Host
 from api.model.olympic_results import Result
 from api.model.olympic_medals import Medal
 from api.services import get_medals, get_results, get_athletes, get_hosts
+from api.predictions import predict, prepare_input_data
 
 from api.dbConnection import get_database
 
@@ -35,3 +36,13 @@ async def read_athletes():
 @app.get("/hosts/", response_model=list[Host])
 async def read_hosts():
     return await get_hosts(db)
+
+@app.post("/predict/{country}/{year}")
+async def get_prediction(country: str, year: int):
+    try:
+        input_data = prepare_input_data(country, year)
+        prediction = predict(input_data)
+        return {"country": country, "year": year, "prediction": prediction[0][0]}
+    except ValueError as e:
+        return {"error": str(e)}
+
