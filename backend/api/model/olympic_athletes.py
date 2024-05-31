@@ -1,6 +1,5 @@
 from pydantic import BaseModel
 
-
 class Athlete(BaseModel):
     athlete_full_name: str
     athlete_url: str
