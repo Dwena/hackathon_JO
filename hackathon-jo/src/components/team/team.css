@@ -9,7 +9,7 @@ body{
 }
 
 .accueil-header{
-    background-color: #09c7e9;
+    background-color: #4a0d7c;
     padding: 20px;
     color: white;
 }
@@ -34,7 +34,7 @@ body{
 }
   
 .card {
-    background: #00b963;
+    background: #520101;
     padding: 20px;
     margin: 10px;
     border-radius: 10px;
@@ -62,6 +62,6 @@ body{
     }
 }
 .card:hover {
-    background: #00b909;
+    background: #a30202;
     color: white;
 }
