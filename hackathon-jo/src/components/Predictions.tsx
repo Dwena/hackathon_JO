@@ -25,24 +25,17 @@ import { TriangleDownIcon, TriangleUpIcon } from '@chakra-ui/icons';
 
 interface Prediction {
   country: string;
+  type: string;
   points: number;
-  discipline: string;
   flag: string;
 }
 // Données de prédiction
 const predictions: Prediction[] = [
-  { country: 'États-Unis', points: 100, discipline: 'Athlétisme', flag: 'https://flagcdn.com/us.svg' },
-  { country: 'Chine', points: 90, discipline: 'Natation', flag: 'https://flagcdn.com/cn.svg' },
-  { country: 'Japon', points: 80, discipline: 'Gymnastique', flag: 'https://flagcdn.com/jp.svg' },
-  { country: 'France', points: 85, discipline: 'Cyclisme', flag: 'https://flagcdn.com/fr.svg' },
+  { country: 'FRANCE', type: 'GOLD', points: 7, flag: 'https://flagcdn.com/fr.svg' },
+  { country: 'FRANCE', type: 'SILVER', points: 5,  flag: 'https://flagcdn.com/fr.svg' },
+  { country: 'FRANCE', type: 'BRONZE', points: 8, flag: 'https://flagcdn.com/fr.svg' },
 ];
 
-const getMedalEmoji = (points: number) => {
-  if (points >= 100) return '🥇';
-  if (points >= 90) return '🥈';
-  if (points >= 80) return '🥉';
-  return '';
-};
 
 const Predictions = () => {
   const data = React.useMemo(() => predictions, []);
@@ -59,18 +52,12 @@ const Predictions = () => {
       ),
     },
     {
-      Header: 'Points',
-      accessor: 'points',
-    },
-    {
-      Header: 'Discipline',
-      accessor: 'discipline',
+      Header: 'Type',
+      accessor: 'type',
     },
     {
       Header: 'Médaille',
-      Cell: ({ row }) => (
-        <Flex justify="center">{getMedalEmoji(row.original.points)}</Flex>
-      ),
+      accessor : 'points',
     },
   ], []);
 
